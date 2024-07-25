@@ -18,7 +18,7 @@ function Shimmer() {
                   <span className="placeholder col-12"></span>
                   <span className="placeholder col-12"></span>
                 </p>
-                <a className="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
+                <button className="btn btn-primary disabled placeholder col-6" aria-disabled="true"></button>
               </div>
             </div>
           </div>
@@ -36,7 +36,7 @@ function Shimmer() {
                   <span className="placeholder col-12"></span>
                   <span className="placeholder col-12"></span>
                 </p>
-                <a className="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
+                <button className="btn btn-primary disabled placeholder col-6" aria-disabled="true"></button>
               </div>
             </div>
           </div>
@@ -54,7 +54,7 @@ function Shimmer() {
                   <span className="placeholder col-12"></span>
                   <span className="placeholder col-12"></span>
                 </p>
-                <a className="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
+                <button className="btn btn-primary disabled placeholder col-6" aria-disabled="true"></button>
               </div>
             </div>
           </div>
@@ -72,7 +72,7 @@ function Shimmer() {
                   <span className="placeholder col-12"></span>
                   <span className="placeholder col-12"></span>
                 </p>
-                <a className="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
+                <button className="btn btn-primary disabled placeholder col-6" aria-disabled="true"></button>
               </div>
             </div>
           </div>
@@ -90,7 +90,7 @@ function Shimmer() {
                   <span className="placeholder col-12"></span>
                   <span className="placeholder col-12"></span>
                 </p>
-                <a className="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
+                <button className="btn btn-primary disabled placeholder col-6" aria-disabled="true"></button>
               </div>
             </div>
           </div>
@@ -108,7 +108,7 @@ function Shimmer() {
                   <span className="placeholder col-12"></span>
                   <span className="placeholder col-12"></span>
                 </p>
-                <a className="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
+                <button className="btn btn-primary disabled placeholder col-6" aria-disabled="true"></button>
               </div>
             </div>
           </div>
@@ -126,7 +126,7 @@ function Shimmer() {
                   <span className="placeholder col-12"></span>
                   <span className="placeholder col-12"></span>
                 </p>
-                <a className="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
+                <button className="btn btn-primary disabled placeholder col-6" aria-disabled="true"></button>
               </div>
             </div>
           </div>
@@ -144,7 +144,7 @@ function Shimmer() {
                   <span className="placeholder col-12"></span>
                   <span className="placeholder col-12"></span>
                 </p>
-                <a className="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
+                <button className="btn btn-primary disabled placeholder col-6" aria-disabled="true"></button>
               </div>
             </div>
           </div>
