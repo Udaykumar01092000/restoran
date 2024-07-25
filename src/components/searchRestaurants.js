@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { fetchSearchRestaurants} from '../apis/apis'; // Import the API function
+import { fetchSearchRestaurants } from '../apis/apis'; // Import the API function
 import ScrollToTopButton from './scrolltop';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -46,7 +46,7 @@ export default function SearchRestaurants() {
             <div className="container">
                 {loading ? (
                     <div className="d-flex justify-content-center">
-                        <div className="spinner-border" role="status" style={{color : "#FEA116"}}>
+                        <div className="spinner-border" role="status" style={{ color: "#FEA116" }}>
                             <span className="sr-only">Loading...</span>
                         </div>
                     </div>
@@ -80,47 +80,46 @@ export default function SearchRestaurants() {
                                         </div>
                                     </div>
                                 );
-                                } else if (item?.card?.card?.restaurants) {
-                                    return (
-                                        <>
-                                            {item?.card?.card?.restaurants.map((restaurant, i) => {
-                                                return (
-                                                    <div className="col" key={i}>
-                                                        <div className="card h-100">
-                                                            <img className='card-img-top' src={`https://media-assets.swiggy.com/swiggy/image/upload/f_auto,q_auto,w_660/${restaurant?.info.cloudinaryImageId}`} alt="Restaurant" />
-                                                            <div className="card-body">
-                                                                <h5 className="card-title">{restaurant?.info.name}</h5>
-                                                                <p className="card-text">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16">
-                                                                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                                    </svg>
-                                                                    <span style={{ marginLeft: "5px" }}>{restaurant?.info.avgRating ? restaurant?.info.avgRating : restaurant?.info.avgRatingString}</span>
-                                                                    <span style={{ marginLeft: "25px" }}><i className="fa-solid fa-motorcycle"></i>{" " + restaurant?.info.sla.slaString}</span>
-                                                                </p>
-                                                                <p style={{ marginBottom: "0px" }} className='card-text'>{restaurant?.info.cuisines.slice(0, 3).join(" , ")}</p>
-                                                                <p style={{ marginTop: "5px" }} className='card-text'>{restaurant?.info.areaName}</p>
-                                                                <div className="d-flex justify-content-center">
-                                                                    <button className='menubtn' id="searchbtn"
-                                                                        onClick={() => {
-                                                                            navigate(`/restaurant/${restaurant?.info.id}/${restaurant?.info.name}`);
-                                                                        }}
-                                                                    >View Menu</button>
-                                                                </div>
+                            } else if (item?.card?.card?.restaurants) {
+                                return (
+                                    <React.Fragment key={`group-${i}`}>
+                                        {item?.card?.card?.restaurants.map((restaurant, j) => {
+                                            return (
+                                                <div className="col" key={`restaurant-${j}`}>
+                                                    <div className="card h-100">
+                                                        <img className='card-img-top' src={`https://media-assets.swiggy.com/swiggy/image/upload/f_auto,q_auto,w_660/${restaurant?.info.cloudinaryImageId}`} alt="Restaurant" />
+                                                        <div className="card-body">
+                                                            <h5 className="card-title">{restaurant?.info.name}</h5>
+                                                            <p className="card-text">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16">
+                                                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                                                </svg>
+                                                                <span style={{ marginLeft: "5px" }}>{restaurant?.info.avgRating ? restaurant?.info.avgRating : restaurant?.info.avgRatingString}</span>
+                                                                <span style={{ marginLeft: "25px" }}><i className="fa-solid fa-motorcycle"></i>{" " + restaurant?.info.sla.slaString}</span>
+                                                            </p>
+                                                            <p style={{ marginBottom: "0px" }} className='card-text'>{restaurant?.info.cuisines.slice(0, 3).join(" , ")}</p>
+                                                            <p style={{ marginTop: "5px" }} className='card-text'>{restaurant?.info.areaName}</p>
+                                                            <div className="d-flex justify-content-center">
+                                                                <button className='menubtn' id="searchbtn"
+                                                                    onClick={() => {
+                                                                        navigate(`/restaurant/${restaurant?.info.id}/${restaurant?.info.name}`);
+                                                                    }}
+                                                                >View Menu</button>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                );
-                                            })}
-                                        </>
-                                    );
-                                }
-                                return null; // Ensure a value is returned for each iteration
-                            })}
-
-                        </div>
-                    )}
+                                                </div>
+                                            );
+                                        })}
+                                    </React.Fragment>
+                                );
+                            }
+                            return null; // Ensure a value is returned for each iteration
+                        })}
+                    </div>
+                )}
             </div>
             <ScrollToTopButton />
         </div>
-    )
+    );
 }
