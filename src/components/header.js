@@ -62,7 +62,17 @@ const Header = ({ setUserSearch, setShowModal }) => {
               <Link className="nav-link active" to="/searchRestaurants">Search Restaurants</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" onClick={() => setShowModal(true)} href="#">Search Locations</a>
+            <a className="nav-link"
+              href="#!"
+              role="button"
+              onClick={(e) => {
+                e.preventDefault();
+                setShowModal(true);
+              }}
+            >
+              Search Locations
+            </a>
+
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/cart">
@@ -89,13 +99,13 @@ const Header = ({ setUserSearch, setShowModal }) => {
             </button>
             <ul className="dropdown-menu">
               <li>
-                <a className="dropdown-item" onClick={() => handleFilterClick('fastDelivery')} href="#">Fast Delivery</a>
+                <a className="dropdown-item" onClick={() => handleFilterClick('fastDelivery')} href="#!">Fast Delivery</a>
               </li>
               <li>
-                <a className="dropdown-item" onClick={() => handleFilterClick('ratinghightolow')} href="#">Rating: High to Low</a>
+                <a className="dropdown-item" onClick={() => handleFilterClick('ratinghightolow')} href="#!">Rating: High to Low</a>
               </li>
               <li>
-                <a className="dropdown-item" onClick={() => handleFilterClick('ratinglowtohigh')} href="#">Rating: Low to High</a>
+                <a className="dropdown-item" onClick={() => handleFilterClick('ratinglowtohigh')} href="#!">Rating: Low to High</a>
               </li>
             </ul>
           </div>

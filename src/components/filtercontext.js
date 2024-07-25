@@ -1,5 +1,4 @@
-// FilterContext.js
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 
 const FilterContext = createContext();
 
@@ -7,7 +6,7 @@ export const FilterProvider = ({ children }) => {
   const [filters, setFilters] = useState([]);
   const [userSearch, setUserSearch] = useState('');
 
-  const applyFilters = (restaurants) => {
+  const applyFilters = useCallback((restaurants) => {
     let filtered = restaurants ? [...restaurants] : [];
   
     if (filters.includes('fastDelivery')) {
@@ -28,13 +27,12 @@ export const FilterProvider = ({ children }) => {
       );
     }
     return filtered;
-  };
-  
+  }, [filters, userSearch]);
 
   useEffect(() => {
-    // Reapply filters whenever filters or userSearch changes
-    applyFilters();
-  }, [filters, userSearch]);
+    const restaurants = [];
+    applyFilters(restaurants);
+  }, [applyFilters]);
 
   return (
     <FilterContext.Provider value={{ filters, setFilters, applyFilters, userSearch, setUserSearch }}>

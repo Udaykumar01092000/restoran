@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { fetchSearchRestaurants} from '../apis/apis'; // Import the API function
 import ScrollToTopButton from './scrolltop';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -14,8 +14,7 @@ export default function SearchRestaurants() {
     useEffect(() => {
         if (restaurantName) {
             setLoading(true);
-            axios
-                .get(`https://www.swiggy.com/dapi/restaurants/search/v3?lat=17.37240&lng=78.43780&str=${restaurantName}&trackingId=undefined&submitAction=SUGGESTION&queryUniqueId=3445c27e-9767-0109-930c-a7c5b2183e33`)
+            fetchSearchRestaurants(17.37240, 78.43780, restaurantName) // Use the imported function
                 .then((res) => {
                     setRestaurants(res.data.data?.cards[1]?.groupedCard?.cardGroupMap?.RESTAURANT || []);
                 })

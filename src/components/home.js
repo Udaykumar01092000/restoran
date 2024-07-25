@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate} from 'react-router-dom';
-import axios from 'axios';
 import { useFilters } from '../components/filtercontext';
 import Shimmer from './shimmer';
 import LocationSelector from '../components/location'; // Import LocationSelector component
 import Slider from './slider';
 import ScrollToTopButton from './scrolltop';
+import { fetchRestaurants } from '../apis/apis';
 
 const Home = ({ userSearch, setUserSearch, showModal, setShowModal }) => {
   const { filters, applyFilters } = useFilters();
@@ -30,7 +30,7 @@ const Home = ({ userSearch, setUserSearch, showModal, setShowModal }) => {
       setRestaurants([]);
       setInitialRestaurants([]);
 
-      axios.get(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=${location.lat}&lng=${location.long}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`)
+      fetchRestaurants(location.lat , location.long)
         .then((res) => {
           const allRestaurants = res.data.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants ?? [];
           setRestaurants(allRestaurants);
