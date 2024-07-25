@@ -53,6 +53,7 @@ export default function SearchRestaurants() {
                 ) : (
                     <div className="row row-cols-1 row-cols-md-4 g-4">
                         {restaurants?.cards?.map((item, i) => {
+                            // Check if item.card.card.info exists
                             if (item?.card?.card?.info) {
                                 return (
                                     <div className="col" key={i}>
@@ -80,7 +81,10 @@ export default function SearchRestaurants() {
                                         </div>
                                     </div>
                                 );
-                            } else if (item?.card?.card?.restaurants) {
+                            }
+                            
+                            // Check if item.card.card.restaurants exists
+                            if (item?.card?.card?.restaurants) {
                                 return (
                                     <React.Fragment key={`group-${i}`}>
                                         {item?.card?.card?.restaurants.map((restaurant, j) => {
@@ -114,9 +118,11 @@ export default function SearchRestaurants() {
                                     </React.Fragment>
                                 );
                             }
+                            
                             return null; // Ensure a value is returned for each iteration
                         })}
                     </div>
+
                 )}
             </div>
             <ScrollToTopButton />
