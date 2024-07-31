@@ -7,7 +7,7 @@ import Slider from './slider';
 import ScrollToTopButton from './scrolltop';
 import { fetchRestaurants } from '../apis/apis';
 
-const Home = ({ userSearch, setUserSearch, showModal, setShowModal }) => {
+const Home = ({ userSearch, showModal, setShowModal }) => {
   const { filters, applyFilters } = useFilters();
   const [restaurants, setRestaurants] = useState([]);
   const [initialRestaurants, setInitialRestaurants] = useState([]);

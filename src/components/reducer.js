@@ -22,7 +22,7 @@ let slice = createSlice({
             }
         },
 
-        clearCart(state, action) {
+        clearCart(state) {
             state.cartItems = [];
         },
 

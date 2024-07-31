@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { fetchLocationSuggestions, fetchLocationDetails } from '../apis/apis'; // Import from the unified API file
 import './location.css';
 
-const LocationSelector = ({ handleLocationChange, handleModalClose, setLocation }) => {
+const LocationSelector = ({handleModalClose, setLocation }) => {
   const [userLocationSearch, setUserLocationSearch] = useState("");
   const [locationSuggestion, setLocationSuggestion] = useState([]);
 
