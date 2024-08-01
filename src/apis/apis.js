@@ -28,10 +28,9 @@ export const fetchRestaurantSpec = (restaurantId, lat = 17.37240, lng = 78.43780
 
 // Search dishes
 export const fetchSearchDishes = (lat, lng, dishName) => {
-  const url = `${API_CONFIG.SEARCH_DISHES}?lat=${lat}&lng=${lng}&str=${dishName}&trackingId=undefined&submitAction=SUGGESTION&queryUniqueId=e8f976e5-270e-3d4d-aca0-573a2513c73a`;
+  const url = `${API_CONFIG.SEARCH_DISHES}?lat=${lat}&lng=${lng}&str=${dishName}&trackingId=2d324f12-ea65-5956-c494-06ea4619cb7b&submitAction=ENTER&queryUniqueId=40a6c7c9-a19c-96dc-8eb5-0a349b87d346`;
   return axios.get(url);
 };
-
 // Search restaurants
 export const fetchSearchRestaurants = (lat, lng, dishName) => {
   const url = `${API_CONFIG.SEARCH_RESTAURANTS}?lat=${lat}&lng=${lng}&str=${dishName}&trackingId=undefined&submitAction=SUGGESTION&queryUniqueId=3445c27e-9767-0109-930c-a7c5b2183e33`;
