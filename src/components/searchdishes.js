@@ -28,30 +28,34 @@ function SearchDishes() {
         }
         
         setLoading(true); // Start loading when fetching data
-
+    
         fetchSearchDishes(17.37240, 78.43780, dishName)
             .then((res) => {
                 // Log entire response to understand its structure
                 console.log('API Response:', res.data);
-
-                // Extract dishes data correctly
-                const dishesData = res.data?.data?.cards[1]?.groupedCard?.cardGroupMap?.DISH?.cards[4]?.card?.card;
-
+    
+                // Extract dishes data correctly, skipping the first item
+                const allDishesData = res.data?.data?.cards || [];
+                const dishesData = allDishesData.slice(1).flatMap(card => 
+                    card?.groupedCard?.cardGroupMap?.DISH?.cards || []
+                );
+    
                 // Log dishesData to see its structure
                 console.log('Dishes Data:', dishesData);
-
-                // Ensure dishesData is an object with restaurant and dishes fields
-                if (dishesData && dishesData.dishes && Array.isArray(dishesData.dishes)) {
-                    // Extract info from each dish and restaurant and map it to the dishes state
-                    const formattedDishes = dishesData.dishes.map(dish => ({
-                        ...dish.info,
-                        restaurant: dishesData.restaurant.info, // Assuming the restaurant info is the same for all dishes
-                    }));
-                    setDishes(formattedDishes);
-                } else {
-                    console.error('Unexpected data format:', dishesData);
-                    setDishes([]); // Ensure dishes is an array
-                }
+    
+                // Map dishes data to a formatted array with validation
+                const formattedDishes = dishesData.map(card => {
+                    const dish = card?.card?.card;
+                    if (dish && dish.info) {
+                        return {
+                            ...dish.info,
+                            restaurant: dish.restaurant?.info,
+                        };
+                    }
+                    return null; // Skip invalid dishes
+                }).filter(dish => dish !== null); // Remove any null entries
+    
+                setDishes(formattedDishes);
                 setHasSearched(true);
             })
             .catch((err) => {
@@ -64,7 +68,8 @@ function SearchDishes() {
                 setLoading(false);
             });
     }, [dishName]);
-
+    
+        
     return (
         <>
             <div style={{ textAlign: "center" }}>
